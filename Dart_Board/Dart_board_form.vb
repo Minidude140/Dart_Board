@@ -15,6 +15,7 @@ Imports System.ComponentModel
 '[*]Count throws
 '[]Save previous throws
 '[]Export previous throws
+'[*] Add Reset Game Function
 Public Class Dart_board_form
     Dim Numberofthrows As Integer
 
@@ -85,4 +86,9 @@ Public Class Dart_board_form
         Me.Close()
     End Sub
 
+    Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click
+        DartBoardPictureBox.Refresh()
+        Numberofthrows = 0
+        UpdateNumberOfThrows(Numberofthrows)
+    End Sub
 End Class
