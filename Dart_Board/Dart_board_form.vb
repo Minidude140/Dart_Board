@@ -1,12 +1,8 @@
-﻿Option Explicit On
-Option Strict On
-'Zachary Christensen
+﻿'Zachary Christensen
 'Spring 2024
 'Dart Board VB Review
 'https://github.com/Minidude140/Dart_Board
 
-Imports System.ComponentModel
-Imports System.Threading
 'To DO
 '[*]Close application functions
 '[*]Draw Quadrants
@@ -22,6 +18,11 @@ Imports System.Threading
 '**TO ASK TEACH**
 '-Why can't I see my label on my out of darts prompt? Better way to pop-up prompt?
 '-Why won't my quadrants draw on form load? why can't I dim my Xmax and Ymax globally? (I think it's related to when the picture box is drawn)
+
+Option Explicit On
+Option Strict On
+
+Imports System.Threading
 
 Public Class Dart_board_form
     Dim numberOfThrows As Integer
