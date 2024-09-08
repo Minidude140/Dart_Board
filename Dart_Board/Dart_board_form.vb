@@ -11,7 +11,7 @@ Imports System.ComponentModel
 '[*]Close application functions
 '[*]Draw Quadrants
 '[]Random number saved x, y 
-'[]Draw Target on x,y coordinates
+'[*]Draw Target on x,y coordinates
 '[*]Count throws
 '[]Save previous throws
 '[]Export previous throws
@@ -60,6 +60,22 @@ Public Class Dart_board_form
         End Select
     End Sub
 
+    ''' <summary>
+    ''' Draws a target on the given X and Y locations
+    ''' </summary>
+    ''' <param name="X"></param>
+    ''' <param name="Y"></param>
+    Sub DrawTarget(X As Integer, Y As Integer)
+        'initialize graphics object and set drawing surface to picture box
+        Dim g As Graphics = DartBoardPictureBox.CreateGraphics
+        'initialize pen as color REd and pen size
+        Dim pen As New Pen(Color.Red, 6)
+        'Draw Center Dot
+        g.DrawEllipse(pen, (X - 3), (Y - 3), 6, 6)
+        'Draw Circle Around Dot
+        g.DrawEllipse(pen, (X - 15), (Y - 15), 30, 30)
+    End Sub
+
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
         DrawQuadrants()
@@ -67,10 +83,14 @@ Public Class Dart_board_form
         UpdateNumberOfThrows(Numberofthrows)
 
     End Sub
+
     Private Sub ThrowDartButton_Click(sender As Object, e As EventArgs) Handles ThrowDartButton.Click,
                                                                                 ThrowDartToolStripMenuItem.Click
+        DrawQuadrants()
         'Throw Random Dart Location here
-
+        Dim Xmax As Integer = CInt(DartBoardPictureBox.Width)
+        Dim Ymax As Integer = CInt(DartBoardPictureBox.Height)
+        DrawTarget(CInt(Xmax / 2), CInt(Ymax / 2))
 
         'Check if number of throws is over the max and update label
         If Numberofthrows < 3 Then
