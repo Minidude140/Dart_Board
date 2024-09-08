@@ -4,5 +4,7 @@
 '
 
 Public Class Dart_board_form
+    Private Sub ThrowDartButton_Click(sender As Object, e As EventArgs) Handles ThrowDartButton.Click
 
+    End Sub
 End Class
