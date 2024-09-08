@@ -11,7 +11,7 @@
 '[*]Count throws
 '[*] Add Reset Game Function
 '[1/2]Add player prompt when out of turns
-'[]Save previous throws
+'[*]Save previous throws
 '[]Export previous throws
 '[]Load old game
 
@@ -28,6 +28,7 @@ Public Class Dart_board_form
     Dim numberOfThrows As Integer
     Dim currentX As Integer
     Dim currentY As Integer
+    Dim throwMessage As String
 
     'Custom Methods
 
@@ -97,10 +98,18 @@ Public Class Dart_board_form
         currentY = CInt((Rnd() * Ymax - 1) + 15)
     End Sub
 
+    ''' <summary>
+    ''' Concatenates throwMessage with latest throw X and Y values.  Updates label
+    ''' </summary>
+    Sub UpdateGameThrows()
+        throwMessage = throwMessage + "(" + CStr(currentX) + "," + CStr(currentY) + ") "
+        GameThrowsCounterLabel.Text = throwMessage
+    End Sub
+
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
         DartBoardPictureBox.Refresh()
-        ResetGameButton.PerformClick()
+        'ResetGameButton.PerformClick()
         'DrawQuadrants()
         'numberOfThrows = 0
         'UpdateNumberOfThrows(numberOfThrows)
@@ -118,6 +127,8 @@ Public Class Dart_board_form
             'increment the number of throws and Update label
             numberOfThrows += 1
             UpdateNumberOfThrows(numberOfThrows)
+            'Save Throw
+            UpdateGameThrows()
         Else 'The number of throws exceeds the number of darts given
             OutOfDartsPrompt.Show()
             System.Threading.Thread.Sleep(1000)
@@ -141,10 +152,15 @@ Public Class Dart_board_form
         'Update number of throws count and label
         numberOfThrows = 0
         UpdateNumberOfThrows(numberOfThrows)
+        'Reset Game throws totals
+        throwMessage = ""
+        'Reset Game throws label
+        GameThrowsCounterLabel.Text = "(X,Y) (X,Y) (X,Y)"
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         'Show about this program form
         AboutForm.Show()
     End Sub
+
 End Class
