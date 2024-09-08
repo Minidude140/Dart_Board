@@ -16,6 +16,7 @@ Imports System.ComponentModel
 '[]Save previous throws
 '[]Export previous throws
 '[*] Add Reset Game Function
+'[]Add player prompt when out of turns
 Public Class Dart_board_form
     Dim numberOfThrows As Integer
     Dim currentX As Integer
@@ -101,15 +102,17 @@ Public Class Dart_board_form
     Private Sub ThrowDartButton_Click(sender As Object, e As EventArgs) Handles ThrowDartButton.Click,
                                                                                 ThrowDartToolStripMenuItem.Click
         DrawQuadrants()
-        'Throw Random Dart Location here
-        RandomXY()
-        DrawTarget(CurrentX, CurrentY)
 
         'Check if number of throws is over the max and update label
         If numberOfThrows < 3 Then
+            'Create Random X, Y
+            RandomXY()
+            'Draw current random X, Y
+            DrawTarget(currentX, currentY)
             numberOfThrows += 1
             UpdateNumberOfThrows(numberOfThrows)
         Else
+
         End If
 
     End Sub
