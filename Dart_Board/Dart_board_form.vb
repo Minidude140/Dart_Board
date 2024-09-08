@@ -6,7 +6,7 @@ Option Strict On
 '
 
 Imports System.ComponentModel
-
+Imports System.Threading
 'To DO
 '[*]Close application functions
 '[*]Draw Quadrants
@@ -17,6 +17,7 @@ Imports System.ComponentModel
 '[]Export previous throws
 '[*] Add Reset Game Function
 '[]Add player prompt when out of turns
+
 Public Class Dart_board_form
     Dim numberOfThrows As Integer
     Dim currentX As Integer
@@ -112,7 +113,9 @@ Public Class Dart_board_form
             numberOfThrows += 1
             UpdateNumberOfThrows(numberOfThrows)
         Else
-
+            OutOfDartsPrompt.Show()
+            System.Threading.Thread.Sleep(1000)
+            OutOfDartsPrompt.Close()
         End If
 
     End Sub
