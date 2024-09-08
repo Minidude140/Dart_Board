@@ -3,7 +3,7 @@ Option Strict On
 'Zachary Christensen
 'Spring 2024
 'Dart Board VB Review
-'
+'https://github.com/Minidude140/Dart_Board
 
 Imports System.ComponentModel
 Imports System.Threading
@@ -13,14 +13,15 @@ Imports System.Threading
 '[*]Random number saved x, y 
 '[*]Draw Target on x,y coordinates
 '[*]Count throws
-'[]Save previous throws
-'[]Export previous throws
 '[*] Add Reset Game Function
 '[1/2]Add player prompt when out of turns
+'[]Save previous throws
+'[]Export previous throws
+'[]Load old game
 
 '**TO ASK TEACH**
 '-Why can't I see my label on my out of darts prompt? Better way to pop-up prompt?
-'-Why won't my quadrants draw on form load?
+'-Why won't my quadrants draw on form load? why can't I dim my Xmax and Ymax globally? (I think it's related to when the picture box is drawn)
 
 Public Class Dart_board_form
     Dim numberOfThrows As Integer
@@ -90,7 +91,6 @@ Public Class Dart_board_form
     Sub RandomXY()
         Dim Xmax As Integer = (DartBoardPictureBox.Width - 30)
         Dim Ymax As Integer = (DartBoardPictureBox.Height - 30)
-
         Randomize()
         currentX = CInt((Rnd() * Xmax - 1) + 15)
         currentY = CInt((Rnd() * Ymax - 1) + 15)
@@ -103,22 +103,21 @@ Public Class Dart_board_form
         'DrawQuadrants()
         'numberOfThrows = 0
         'UpdateNumberOfThrows(numberOfThrows)
-
     End Sub
 
     Private Sub ThrowDartButton_Click(sender As Object, e As EventArgs) Handles ThrowDartButton.Click,
                                                                                 ThrowDartToolStripMenuItem.Click
-        DrawQuadrants()
-
+        DrawQuadrants() 'Remove this at some point
         'Check if number of throws is over the max and update label
         If numberOfThrows < 3 Then
             'Create Random X, Y
             RandomXY()
             'Draw current random X, Y
             DrawTarget(currentX, currentY)
+            'increment the number of throws and Update label
             numberOfThrows += 1
             UpdateNumberOfThrows(numberOfThrows)
-        Else
+        Else 'The number of throws exceeds the number of darts given
             OutOfDartsPrompt.Show()
             System.Threading.Thread.Sleep(1000)
             OutOfDartsPrompt.Close()
@@ -128,18 +127,23 @@ Public Class Dart_board_form
 
     Private Sub QuitButton_Click(sender As Object, e As EventArgs) Handles QuitButton.Click,
                                                                            QuitToolStripMenuItem.Click
+        'Quit application
         Me.Close()
     End Sub
 
     Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click,
                                                                                            ResetGameButton.Click
+        'Clear the Dart Board Screen
         DartBoardPictureBox.Refresh()
+        'ReDraw the cross quadrants
         DrawQuadrants()
+        'Update number of throws count and label
         numberOfThrows = 0
         UpdateNumberOfThrows(numberOfThrows)
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        'Show about this program form
         AboutForm.Show()
     End Sub
 End Class
