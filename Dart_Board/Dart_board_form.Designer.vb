@@ -37,6 +37,7 @@ Partial Class Dart_board_form
         Me.QuitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DartBoardPictureBox = New System.Windows.Forms.PictureBox()
+        Me.ResetGameButton = New System.Windows.Forms.Button()
         Me.OptionsMenuStrip.SuspendLayout()
         CType(Me.DartBoardPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -150,11 +151,22 @@ Partial Class Dart_board_form
         Me.DartBoardPictureBox.TabIndex = 7
         Me.DartBoardPictureBox.TabStop = False
         '
+        'ResetGameButton
+        '
+        Me.ResetGameButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ResetGameButton.Location = New System.Drawing.Point(577, 519)
+        Me.ResetGameButton.Name = "ResetGameButton"
+        Me.ResetGameButton.Size = New System.Drawing.Size(205, 50)
+        Me.ResetGameButton.TabIndex = 8
+        Me.ResetGameButton.Text = "Reset"
+        Me.ResetGameButton.UseVisualStyleBackColor = True
+        '
         'Dart_board_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1083, 582)
+        Me.Controls.Add(Me.ResetGameButton)
         Me.Controls.Add(Me.DartBoardPictureBox)
         Me.Controls.Add(Me.QuitButton)
         Me.Controls.Add(Me.NumberOfThrowLabel)
@@ -190,4 +202,5 @@ Partial Class Dart_board_form
     Friend WithEvents QuitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DartBoardPictureBox As PictureBox
+    Friend WithEvents ResetGameButton As Button
 End Class

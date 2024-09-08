@@ -16,7 +16,11 @@ Imports System.Threading
 '[]Save previous throws
 '[]Export previous throws
 '[*] Add Reset Game Function
-'[]Add player prompt when out of turns
+'[1/2]Add player prompt when out of turns
+
+'**TO ASK TEACH**
+'-Why can't I see my label on my out of darts prompt? Better way to pop-up prompt?
+'-Why won't my quadrants draw on form load?
 
 Public Class Dart_board_form
     Dim numberOfThrows As Integer
@@ -94,9 +98,11 @@ Public Class Dart_board_form
 
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
-        DrawQuadrants()
-        numberOfThrows = 0
-        UpdateNumberOfThrows(numberOfThrows)
+        DartBoardPictureBox.Refresh()
+        ResetGameButton.PerformClick()
+        'DrawQuadrants()
+        'numberOfThrows = 0
+        'UpdateNumberOfThrows(numberOfThrows)
 
     End Sub
 
@@ -125,10 +131,12 @@ Public Class Dart_board_form
         Me.Close()
     End Sub
 
-    Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click
+    Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click,
+                                                                                           ResetGameButton.Click
         DartBoardPictureBox.Refresh()
-        Numberofthrows = 0
-        UpdateNumberOfThrows(Numberofthrows)
+        DrawQuadrants()
+        numberOfThrows = 0
+        UpdateNumberOfThrows(numberOfThrows)
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
