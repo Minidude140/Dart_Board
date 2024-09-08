@@ -93,8 +93,8 @@ Public Class Dart_board_form
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
         DrawQuadrants()
-        Numberofthrows = 0
-        UpdateNumberOfThrows(Numberofthrows)
+        numberOfThrows = 0
+        UpdateNumberOfThrows(numberOfThrows)
 
     End Sub
 
@@ -123,5 +123,9 @@ Public Class Dart_board_form
         DartBoardPictureBox.Refresh()
         Numberofthrows = 0
         UpdateNumberOfThrows(Numberofthrows)
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        AboutForm.Show()
     End Sub
 End Class

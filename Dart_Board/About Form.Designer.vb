@@ -29,10 +29,10 @@ Partial Class AboutForm
         '
         'AbouQuitButton
         '
-        Me.AbouQuitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AbouQuitButton.Location = New System.Drawing.Point(133, 168)
+        Me.AbouQuitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AbouQuitButton.Location = New System.Drawing.Point(133, 152)
         Me.AbouQuitButton.Name = "AbouQuitButton"
-        Me.AbouQuitButton.Size = New System.Drawing.Size(106, 29)
+        Me.AbouQuitButton.Size = New System.Drawing.Size(133, 45)
         Me.AbouQuitButton.TabIndex = 0
         Me.AbouQuitButton.Text = "Close"
         Me.AbouQuitButton.UseVisualStyleBackColor = True
