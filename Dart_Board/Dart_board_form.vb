@@ -10,14 +10,16 @@ Imports System.ComponentModel
 'To DO
 '[*]Close application functions
 '[*]Draw Quadrants
-'[]Random number saved x, y 
+'[*]Random number saved x, y 
 '[*]Draw Target on x,y coordinates
 '[*]Count throws
 '[]Save previous throws
 '[]Export previous throws
 '[*] Add Reset Game Function
 Public Class Dart_board_form
-    Dim Numberofthrows As Integer
+    Dim numberOfThrows As Integer
+    Dim currentX As Integer
+    Dim currentY As Integer
 
     'Custom Methods
 
@@ -76,6 +78,18 @@ Public Class Dart_board_form
         g.DrawEllipse(pen, (X - 15), (Y - 15), 30, 30)
     End Sub
 
+    ''' <summary>
+    ''' Sets Current X, Y to a random number within the Dart board picture box
+    ''' </summary>
+    Sub RandomXY()
+        Dim Xmax As Integer = (DartBoardPictureBox.Width - 30)
+        Dim Ymax As Integer = (DartBoardPictureBox.Height - 30)
+
+        Randomize()
+        currentX = CInt((Rnd() * Xmax - 1) + 15)
+        currentY = CInt((Rnd() * Ymax - 1) + 15)
+    End Sub
+
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
         DrawQuadrants()
@@ -88,14 +102,13 @@ Public Class Dart_board_form
                                                                                 ThrowDartToolStripMenuItem.Click
         DrawQuadrants()
         'Throw Random Dart Location here
-        Dim Xmax As Integer = CInt(DartBoardPictureBox.Width)
-        Dim Ymax As Integer = CInt(DartBoardPictureBox.Height)
-        DrawTarget(CInt(Xmax / 2), CInt(Ymax / 2))
+        RandomXY()
+        DrawTarget(CurrentX, CurrentY)
 
         'Check if number of throws is over the max and update label
-        If Numberofthrows < 3 Then
-            Numberofthrows += 1
-            UpdateNumberOfThrows(Numberofthrows)
+        If numberOfThrows < 3 Then
+            numberOfThrows += 1
+            UpdateNumberOfThrows(numberOfThrows)
         Else
         End If
 
