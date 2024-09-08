@@ -36,7 +36,9 @@ Partial Class Dart_board_form
         Me.ImportPreviousSaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DartBoardPictureBox = New System.Windows.Forms.PictureBox()
         Me.OptionsMenuStrip.SuspendLayout()
+        CType(Me.DartBoardPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ThrowDartButton
@@ -139,11 +141,21 @@ Partial Class Dart_board_form
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
         '
+        'DartBoardPictureBox
+        '
+        Me.DartBoardPictureBox.BackColor = System.Drawing.Color.BlanchedAlmond
+        Me.DartBoardPictureBox.Location = New System.Drawing.Point(12, 27)
+        Me.DartBoardPictureBox.Name = "DartBoardPictureBox"
+        Me.DartBoardPictureBox.Size = New System.Drawing.Size(1059, 486)
+        Me.DartBoardPictureBox.TabIndex = 7
+        Me.DartBoardPictureBox.TabStop = False
+        '
         'Dart_board_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1083, 582)
+        Me.Controls.Add(Me.DartBoardPictureBox)
         Me.Controls.Add(Me.QuitButton)
         Me.Controls.Add(Me.NumberOfThrowLabel)
         Me.Controls.Add(Me.OutOfLabel)
@@ -158,6 +170,7 @@ Partial Class Dart_board_form
         Me.Text = "Dart Board"
         Me.OptionsMenuStrip.ResumeLayout(False)
         Me.OptionsMenuStrip.PerformLayout()
+        CType(Me.DartBoardPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -176,4 +189,5 @@ Partial Class Dart_board_form
     Friend WithEvents ImportPreviousSaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents QuitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DartBoardPictureBox As PictureBox
 End Class
