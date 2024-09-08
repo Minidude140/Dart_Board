@@ -109,6 +109,9 @@ Public Class Dart_board_form
         GameThrowsCounterLabel.Text = throwMessage
     End Sub
 
+    ''' <summary>
+    ''' Saves the current throw into an array called "totalThrows"
+    ''' </summary>
     Sub SaveThrow()
         totalThrows(numberOfThrows, 0) = currentX
         totalThrows(numberOfThrows, 1) = currentY
@@ -165,6 +168,8 @@ Public Class Dart_board_form
 
         '**********************************************Need to export here**************************************************************************************
 
+        'Reset total throw Array
+        totalThrows = {{0, 0}, {0, 0}, {0, 0}}
         'Reset Game throws totals
         throwMessage = ""
         'Reset Game throws label
