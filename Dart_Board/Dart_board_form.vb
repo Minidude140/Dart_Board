@@ -18,6 +18,7 @@
 '**TO ASK TEACH**
 '-Why can't I see my label on my "out of darts" prompt? Better way to pop-up prompt?
 '-Why won't my quadrants draw on form load? why can't I dim my Xmax and Ymax globally? (I think it's related to when the picture box is drawn)
+'-Why can't I see the value of my array when doing a "Step into"
 
 Option Explicit On
 Option Strict On
