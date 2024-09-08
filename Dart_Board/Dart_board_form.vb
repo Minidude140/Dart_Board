@@ -16,7 +16,7 @@
 '[]Load old game
 
 '**TO ASK TEACH**
-'-Why can't I see my label on my out of darts prompt? Better way to pop-up prompt?
+'-Why can't I see my label on my "out of darts" prompt? Better way to pop-up prompt?
 '-Why won't my quadrants draw on form load? why can't I dim my Xmax and Ymax globally? (I think it's related to when the picture box is drawn)
 
 Option Explicit On
@@ -29,6 +29,7 @@ Public Class Dart_board_form
     Dim currentX As Integer
     Dim currentY As Integer
     Dim throwMessage As String
+    Dim totalThrows(,) As Integer = {{0, 0}, {0, 0}, {0, 0}}
 
     'Custom Methods
 
@@ -101,9 +102,16 @@ Public Class Dart_board_form
     ''' <summary>
     ''' Concatenates throwMessage with latest throw X and Y values.  Updates label
     ''' </summary>
-    Sub UpdateGameThrows()
+    Sub UpdateGameThrowsLabel()
+        'Add current throw with new throw X and Y
         throwMessage = throwMessage + "(" + CStr(currentX) + "," + CStr(currentY) + ") "
+        'Update Label with new throw
         GameThrowsCounterLabel.Text = throwMessage
+    End Sub
+
+    Sub SaveThrow()
+        totalThrows(numberOfThrows, 0) = currentX
+        totalThrows(numberOfThrows, 1) = currentY
     End Sub
 
     'Event Handlers
@@ -124,11 +132,13 @@ Public Class Dart_board_form
             RandomXY()
             'Draw current random X, Y
             DrawTarget(currentX, currentY)
+            'Save current throw to array
+            SaveThrow()
             'increment the number of throws and Update label
             numberOfThrows += 1
             UpdateNumberOfThrows(numberOfThrows)
-            'Save Throw
-            UpdateGameThrows()
+            'Update current throws label
+            UpdateGameThrowsLabel()
         Else 'The number of throws exceeds the number of darts given
             OutOfDartsPrompt.Show()
             System.Threading.Thread.Sleep(1000)
@@ -152,6 +162,9 @@ Public Class Dart_board_form
         'Update number of throws count and label
         numberOfThrows = 0
         UpdateNumberOfThrows(numberOfThrows)
+
+        '**********************************************Need to export here**************************************************************************************
+
         'Reset Game throws totals
         throwMessage = ""
         'Reset Game throws label
