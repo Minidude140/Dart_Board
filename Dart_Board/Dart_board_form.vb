@@ -181,5 +181,4 @@ Public Class Dart_board_form
         'Show about this program form
         AboutForm.Show()
     End Sub
-
 End Class
