@@ -216,6 +216,7 @@ Partial Class Dart_board_form
         Me.Name = "Dart_board_form"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dart Board"
+        Me.TransparencyKey = System.Drawing.Color.Lime
         Me.OptionsMenuStrip.ResumeLayout(False)
         Me.OptionsMenuStrip.PerformLayout()
         CType(Me.DartBoardPictureBox, System.ComponentModel.ISupportInitialize).EndInit()

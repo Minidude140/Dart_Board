@@ -147,8 +147,10 @@ Public Class Dart_board_form
             UpdateGameThrowsLabel()
         Else 'The number of throws exceeds the number of darts given
             OutOfDartsPrompt.Show()
+            'PromptTest.Show()
             System.Threading.Thread.Sleep(1000)
             OutOfDartsPrompt.Close()
+            'PromptTest.Close()
         End If
 
     End Sub
