@@ -48,7 +48,7 @@ Partial Class Dart_board_form
         '
         Me.ThrowDartButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ThrowDartButton.Location = New System.Drawing.Point(16, 640)
-        Me.ThrowDartButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ThrowDartButton.Margin = New System.Windows.Forms.Padding(4)
         Me.ThrowDartButton.Name = "ThrowDartButton"
         Me.ThrowDartButton.Size = New System.Drawing.Size(372, 62)
         Me.ThrowDartButton.TabIndex = 0
@@ -96,7 +96,7 @@ Partial Class Dart_board_form
         '
         Me.QuitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.QuitButton.Location = New System.Drawing.Point(1155, 639)
-        Me.QuitButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.QuitButton.Margin = New System.Windows.Forms.Padding(4)
         Me.QuitButton.Name = "QuitButton"
         Me.QuitButton.Size = New System.Drawing.Size(273, 62)
         Me.QuitButton.TabIndex = 5
@@ -154,7 +154,7 @@ Partial Class Dart_board_form
         '
         Me.DartBoardPictureBox.BackColor = System.Drawing.Color.BlanchedAlmond
         Me.DartBoardPictureBox.Location = New System.Drawing.Point(16, 33)
-        Me.DartBoardPictureBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DartBoardPictureBox.Margin = New System.Windows.Forms.Padding(4)
         Me.DartBoardPictureBox.Name = "DartBoardPictureBox"
         Me.DartBoardPictureBox.Size = New System.Drawing.Size(1412, 598)
         Me.DartBoardPictureBox.TabIndex = 7
@@ -164,7 +164,7 @@ Partial Class Dart_board_form
         '
         Me.ResetGameButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ResetGameButton.Location = New System.Drawing.Point(977, 639)
-        Me.ResetGameButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ResetGameButton.Margin = New System.Windows.Forms.Padding(4)
         Me.ResetGameButton.Name = "ResetGameButton"
         Me.ResetGameButton.Size = New System.Drawing.Size(169, 62)
         Me.ResetGameButton.TabIndex = 8
@@ -211,7 +211,7 @@ Partial Class Dart_board_form
         Me.Controls.Add(Me.OptionsMenuStrip)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MainMenuStrip = Me.OptionsMenuStrip
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.Name = "Dart_board_form"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

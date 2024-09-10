@@ -183,4 +183,8 @@ Public Class Dart_board_form
         'Show about this program form
         AboutForm.Show()
     End Sub
+
+    Private Sub spacepress(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        ThrowDartButton.PerformClick()
+    End Sub
 End Class
