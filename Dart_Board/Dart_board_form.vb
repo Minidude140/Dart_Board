@@ -137,6 +137,22 @@ Public Class Dart_board_form
         UpdateGameThrowsLabel()
     End Sub
 
+    Sub ResetGame()
+        'Clear the Dart Board Screen
+        DartBoardPictureBox.Refresh()
+        'ReDraw the cross quadrants
+        DrawQuadrants()
+        'Update number of throws count and label
+        numberOfThrows = 0
+        UpdateNumberOfThrows(numberOfThrows)
+        'Reset total throw Array
+        totalThrows = {{0, 0}, {0, 0}, {0, 0}}
+        'Reset Game throws totals
+        throwMessage = ""
+        'Reset Game throws label
+        GameThrowsCounterLabel.Text = "(X,Y) (X,Y) (X,Y)"
+    End Sub
+
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
         DartBoardPictureBox.Refresh()
@@ -169,22 +185,8 @@ Public Class Dart_board_form
 
     Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click,
                                                                                            ResetGameButton.Click
-        'Clear the Dart Board Screen
-        DartBoardPictureBox.Refresh()
-        'ReDraw the cross quadrants
-        DrawQuadrants()
-        'Update number of throws count and label
-        numberOfThrows = 0
-        UpdateNumberOfThrows(numberOfThrows)
-
         '**********************************************Need to export here**************************************************************************************
-
-        'Reset total throw Array
-        totalThrows = {{0, 0}, {0, 0}, {0, 0}}
-        'Reset Game throws totals
-        throwMessage = ""
-        'Reset Game throws label
-        GameThrowsCounterLabel.Text = "(X,Y) (X,Y) (X,Y)"
+        ResetGame()
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
