@@ -120,6 +120,23 @@ Public Class Dart_board_form
         totalThrows(numberOfThrows, 1) = currentY
     End Sub
 
+    ''' <summary>
+    ''' Draws a Target on Random Coordinates, Increments throws, Saves Throw in array, and updates labels
+    ''' </summary>
+    Sub ThrowDart()
+        'Create Random X, Y
+        RandomXY()
+        'Draw current random X, Y
+        DrawTarget(currentX, currentY)
+        'Save current throw to array
+        SaveThrow()
+        'increment the number of throws and Update label
+        numberOfThrows += 1
+        UpdateNumberOfThrows(numberOfThrows)
+        'Update current throws label
+        UpdateGameThrowsLabel()
+    End Sub
+
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
         DartBoardPictureBox.Refresh()
@@ -134,17 +151,7 @@ Public Class Dart_board_form
         DrawQuadrants() 'Remove this at some point
         'Check if number of throws is over the max and update label
         If numberOfThrows < 3 Then
-            'Create Random X, Y
-            RandomXY()
-            'Draw current random X, Y
-            DrawTarget(currentX, currentY)
-            'Save current throw to array
-            SaveThrow()
-            'increment the number of throws and Update label
-            numberOfThrows += 1
-            UpdateNumberOfThrows(numberOfThrows)
-            'Update current throws label
-            UpdateGameThrowsLabel()
+            ThrowDart()
         Else 'The number of throws exceeds the number of darts given
             'OutOfDartsPrompt.Show()
             'System.Threading.Thread.Sleep(1000)
