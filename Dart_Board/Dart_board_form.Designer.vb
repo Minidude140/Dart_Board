@@ -24,7 +24,7 @@ Partial Class Dart_board_form
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.ThrowDartButton = New System.Windows.Forms.Button()
-        Me.ThrowDartButtonToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.DartBoardToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.ThrowsLabel = New System.Windows.Forms.Label()
         Me.OutOfLabel = New System.Windows.Forms.Label()
         Me.NumberOfThrowLabel = New System.Windows.Forms.Label()
@@ -52,13 +52,10 @@ Partial Class Dart_board_form
         Me.ThrowDartButton.Margin = New System.Windows.Forms.Padding(4)
         Me.ThrowDartButton.Name = "ThrowDartButton"
         Me.ThrowDartButton.Size = New System.Drawing.Size(372, 62)
-        Me.ThrowDartButton.TabIndex = 0
+        Me.ThrowDartButton.TabIndex = 1
         Me.ThrowDartButton.Text = "Throw Dart"
+        Me.DartBoardToolTip.SetToolTip(Me.ThrowDartButton, "This Button Will Generate a Random Dart Throw")
         Me.ThrowDartButton.UseVisualStyleBackColor = True
-        '
-        'ThrowDartButtonToolTip
-        '
-        Me.ThrowDartButtonToolTip.ToolTipTitle = "This Button Will Throw a Dart"
         '
         'ThrowsLabel
         '
@@ -69,7 +66,7 @@ Partial Class Dart_board_form
         Me.ThrowsLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.ThrowsLabel.Name = "ThrowsLabel"
         Me.ThrowsLabel.Size = New System.Drawing.Size(178, 25)
-        Me.ThrowsLabel.TabIndex = 2
+        Me.ThrowsLabel.TabIndex = 5
         Me.ThrowsLabel.Text = "Number of Throws:"
         '
         'OutOfLabel
@@ -104,7 +101,7 @@ Partial Class Dart_board_form
         Me.QuitButton.Margin = New System.Windows.Forms.Padding(4)
         Me.QuitButton.Name = "QuitButton"
         Me.QuitButton.Size = New System.Drawing.Size(169, 62)
-        Me.QuitButton.TabIndex = 5
+        Me.QuitButton.TabIndex = 3
         Me.QuitButton.Text = "Quit"
         Me.QuitButton.UseVisualStyleBackColor = True
         '
@@ -114,7 +111,7 @@ Partial Class Dart_board_form
         Me.OptionsMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.OptionsMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.OptionsMenuStrip.Name = "OptionsMenuStrip"
-        Me.OptionsMenuStrip.Size = New System.Drawing.Size(1339, 30)
+        Me.OptionsMenuStrip.Size = New System.Drawing.Size(1339, 28)
         Me.OptionsMenuStrip.TabIndex = 6
         Me.OptionsMenuStrip.Text = "Options"
         '
@@ -176,7 +173,7 @@ Partial Class Dart_board_form
         Me.ResetGameButton.Margin = New System.Windows.Forms.Padding(4)
         Me.ResetGameButton.Name = "ResetGameButton"
         Me.ResetGameButton.Size = New System.Drawing.Size(169, 62)
-        Me.ResetGameButton.TabIndex = 8
+        Me.ResetGameButton.TabIndex = 2
         Me.ResetGameButton.Text = "Reset"
         Me.ResetGameButton.UseVisualStyleBackColor = True
         '
@@ -237,7 +234,7 @@ Partial Class Dart_board_form
     End Sub
 
     Friend WithEvents ThrowDartButton As Button
-    Friend WithEvents ThrowDartButtonToolTip As ToolTip
+    Friend WithEvents DartBoardToolTip As ToolTip
     Friend WithEvents ThrowsLabel As Label
     Friend WithEvents OutOfLabel As Label
     Friend WithEvents NumberOfThrowLabel As Label
