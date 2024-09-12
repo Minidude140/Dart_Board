@@ -46,6 +46,7 @@ Partial Class Dart_board_form
         '
         'ThrowDartButton
         '
+        Me.ThrowDartButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.ThrowDartButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ThrowDartButton.Location = New System.Drawing.Point(16, 640)
         Me.ThrowDartButton.Margin = New System.Windows.Forms.Padding(4)
@@ -61,6 +62,7 @@ Partial Class Dart_board_form
         '
         'ThrowsLabel
         '
+        Me.ThrowsLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.ThrowsLabel.AutoSize = True
         Me.ThrowsLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ThrowsLabel.Location = New System.Drawing.Point(432, 640)
@@ -72,6 +74,7 @@ Partial Class Dart_board_form
         '
         'OutOfLabel
         '
+        Me.OutOfLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.OutOfLabel.AutoSize = True
         Me.OutOfLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OutOfLabel.Location = New System.Drawing.Point(517, 679)
@@ -83,6 +86,7 @@ Partial Class Dart_board_form
         '
         'NumberOfThrowLabel
         '
+        Me.NumberOfThrowLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.NumberOfThrowLabel.AutoSize = True
         Me.NumberOfThrowLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumberOfThrowLabel.Location = New System.Drawing.Point(476, 679)
@@ -94,11 +98,12 @@ Partial Class Dart_board_form
         '
         'QuitButton
         '
+        Me.QuitButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.QuitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.QuitButton.Location = New System.Drawing.Point(1155, 639)
         Me.QuitButton.Margin = New System.Windows.Forms.Padding(4)
         Me.QuitButton.Name = "QuitButton"
-        Me.QuitButton.Size = New System.Drawing.Size(273, 62)
+        Me.QuitButton.Size = New System.Drawing.Size(169, 62)
         Me.QuitButton.TabIndex = 5
         Me.QuitButton.Text = "Quit"
         Me.QuitButton.UseVisualStyleBackColor = True
@@ -109,7 +114,7 @@ Partial Class Dart_board_form
         Me.OptionsMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.OptionsMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.OptionsMenuStrip.Name = "OptionsMenuStrip"
-        Me.OptionsMenuStrip.Size = New System.Drawing.Size(1444, 28)
+        Me.OptionsMenuStrip.Size = New System.Drawing.Size(1339, 30)
         Me.OptionsMenuStrip.TabIndex = 6
         Me.OptionsMenuStrip.Text = "Options"
         '
@@ -152,16 +157,20 @@ Partial Class Dart_board_form
         '
         'DartBoardPictureBox
         '
+        Me.DartBoardPictureBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DartBoardPictureBox.BackColor = System.Drawing.Color.BlanchedAlmond
         Me.DartBoardPictureBox.Location = New System.Drawing.Point(16, 33)
         Me.DartBoardPictureBox.Margin = New System.Windows.Forms.Padding(4)
         Me.DartBoardPictureBox.Name = "DartBoardPictureBox"
-        Me.DartBoardPictureBox.Size = New System.Drawing.Size(1412, 598)
+        Me.DartBoardPictureBox.Size = New System.Drawing.Size(1307, 598)
         Me.DartBoardPictureBox.TabIndex = 7
         Me.DartBoardPictureBox.TabStop = False
         '
         'ResetGameButton
         '
+        Me.ResetGameButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ResetGameButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ResetGameButton.Location = New System.Drawing.Point(977, 639)
         Me.ResetGameButton.Margin = New System.Windows.Forms.Padding(4)
@@ -173,6 +182,7 @@ Partial Class Dart_board_form
         '
         'GameThrowLabel
         '
+        Me.GameThrowLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.GameThrowLabel.AutoSize = True
         Me.GameThrowLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GameThrowLabel.Location = New System.Drawing.Point(684, 640)
@@ -184,6 +194,7 @@ Partial Class Dart_board_form
         '
         'GameThrowsCounterLabel
         '
+        Me.GameThrowsCounterLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.GameThrowsCounterLabel.AutoSize = True
         Me.GameThrowsCounterLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GameThrowsCounterLabel.Location = New System.Drawing.Point(654, 678)
@@ -198,7 +209,7 @@ Partial Class Dart_board_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1444, 716)
+        Me.ClientSize = New System.Drawing.Size(1339, 716)
         Me.Controls.Add(Me.GameThrowsCounterLabel)
         Me.Controls.Add(Me.GameThrowLabel)
         Me.Controls.Add(Me.ResetGameButton)
@@ -209,10 +220,10 @@ Partial Class Dart_board_form
         Me.Controls.Add(Me.ThrowsLabel)
         Me.Controls.Add(Me.ThrowDartButton)
         Me.Controls.Add(Me.OptionsMenuStrip)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MainMenuStrip = Me.OptionsMenuStrip
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(1357, 300)
         Me.Name = "Dart_board_form"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dart Board"

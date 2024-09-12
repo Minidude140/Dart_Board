@@ -107,12 +107,6 @@
     <Compile Include="OutOfDartsPrompt.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PromptTest.Designer.vb">
-      <DependentUpon>PromptTest.vb</DependentUpon>
-    </Compile>
-    <Compile Include="PromptTest.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dart_board_form.resx">
@@ -129,9 +123,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OutOfDartsPrompt.resx">
       <DependentUpon>OutOfDartsPrompt.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PromptTest.resx">
-      <DependentUpon>PromptTest.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
