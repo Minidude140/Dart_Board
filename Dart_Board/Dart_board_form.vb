@@ -146,11 +146,10 @@ Public Class Dart_board_form
             'Update current throws label
             UpdateGameThrowsLabel()
         Else 'The number of throws exceeds the number of darts given
-            OutOfDartsPrompt.Show()
-            'PromptTest.Show()
-            System.Threading.Thread.Sleep(1000)
-            OutOfDartsPrompt.Close()
-            'PromptTest.Close()
+            'OutOfDartsPrompt.Show()
+            'System.Threading.Thread.Sleep(1000)
+            'OutOfDartsPrompt.Close()
+            MsgBox("You're Out of Darts!  Please Reset the Game")
         End If
 
     End Sub
