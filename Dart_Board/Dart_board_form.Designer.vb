@@ -25,10 +25,11 @@ Partial Class Dart_board_form
         Me.components = New System.ComponentModel.Container()
         Me.ThrowDartButton = New System.Windows.Forms.Button()
         Me.DartBoardToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.QuitButton = New System.Windows.Forms.Button()
+        Me.ResetGameButton = New System.Windows.Forms.Button()
         Me.ThrowsLabel = New System.Windows.Forms.Label()
         Me.OutOfLabel = New System.Windows.Forms.Label()
         Me.NumberOfThrowLabel = New System.Windows.Forms.Label()
-        Me.QuitButton = New System.Windows.Forms.Button()
         Me.OptionsMenuStrip = New System.Windows.Forms.MenuStrip()
         Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ThrowDartToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -37,9 +38,9 @@ Partial Class Dart_board_form
         Me.QuitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DartBoardPictureBox = New System.Windows.Forms.PictureBox()
-        Me.ResetGameButton = New System.Windows.Forms.Button()
         Me.GameThrowLabel = New System.Windows.Forms.Label()
         Me.GameThrowsCounterLabel = New System.Windows.Forms.Label()
+        Me.testLabel = New System.Windows.Forms.Label()
         Me.OptionsMenuStrip.SuspendLayout()
         CType(Me.DartBoardPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -56,6 +57,32 @@ Partial Class Dart_board_form
         Me.ThrowDartButton.Text = "Throw Dart"
         Me.DartBoardToolTip.SetToolTip(Me.ThrowDartButton, "This Button Will Generate a Random Dart Throw")
         Me.ThrowDartButton.UseVisualStyleBackColor = True
+        '
+        'QuitButton
+        '
+        Me.QuitButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.QuitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.QuitButton.Location = New System.Drawing.Point(1155, 639)
+        Me.QuitButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.QuitButton.Name = "QuitButton"
+        Me.QuitButton.Size = New System.Drawing.Size(169, 62)
+        Me.QuitButton.TabIndex = 3
+        Me.QuitButton.Text = "Quit"
+        Me.DartBoardToolTip.SetToolTip(Me.QuitButton, "This Button Will Exit the Program")
+        Me.QuitButton.UseVisualStyleBackColor = True
+        '
+        'ResetGameButton
+        '
+        Me.ResetGameButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ResetGameButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ResetGameButton.Location = New System.Drawing.Point(977, 639)
+        Me.ResetGameButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.ResetGameButton.Name = "ResetGameButton"
+        Me.ResetGameButton.Size = New System.Drawing.Size(169, 62)
+        Me.ResetGameButton.TabIndex = 2
+        Me.ResetGameButton.Text = "Reset"
+        Me.DartBoardToolTip.SetToolTip(Me.ResetGameButton, "This Button Will Reset the Game")
+        Me.ResetGameButton.UseVisualStyleBackColor = True
         '
         'ThrowsLabel
         '
@@ -93,26 +120,13 @@ Partial Class Dart_board_form
         Me.NumberOfThrowLabel.TabIndex = 4
         Me.NumberOfThrowLabel.Text = "I I I"
         '
-        'QuitButton
-        '
-        Me.QuitButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.QuitButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.QuitButton.Location = New System.Drawing.Point(1155, 639)
-        Me.QuitButton.Margin = New System.Windows.Forms.Padding(4)
-        Me.QuitButton.Name = "QuitButton"
-        Me.QuitButton.Size = New System.Drawing.Size(169, 62)
-        Me.QuitButton.TabIndex = 3
-        Me.QuitButton.Text = "Quit"
-        Me.DartBoardToolTip.SetToolTip(Me.QuitButton, "This Button Will Exit the Program")
-        Me.QuitButton.UseVisualStyleBackColor = True
-        '
         'OptionsMenuStrip
         '
         Me.OptionsMenuStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.OptionsMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.OptionsMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.OptionsMenuStrip.Name = "OptionsMenuStrip"
-        Me.OptionsMenuStrip.Size = New System.Drawing.Size(1339, 28)
+        Me.OptionsMenuStrip.Size = New System.Drawing.Size(1339, 30)
         Me.OptionsMenuStrip.TabIndex = 6
         Me.OptionsMenuStrip.Text = "Options"
         '
@@ -168,19 +182,6 @@ Partial Class Dart_board_form
         Me.DartBoardPictureBox.TabIndex = 7
         Me.DartBoardPictureBox.TabStop = False
         '
-        'ResetGameButton
-        '
-        Me.ResetGameButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ResetGameButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ResetGameButton.Location = New System.Drawing.Point(977, 639)
-        Me.ResetGameButton.Margin = New System.Windows.Forms.Padding(4)
-        Me.ResetGameButton.Name = "ResetGameButton"
-        Me.ResetGameButton.Size = New System.Drawing.Size(169, 62)
-        Me.ResetGameButton.TabIndex = 2
-        Me.ResetGameButton.Text = "Reset"
-        Me.DartBoardToolTip.SetToolTip(Me.ResetGameButton, "This Button Will Reset the Game")
-        Me.ResetGameButton.UseVisualStyleBackColor = True
-        '
         'GameThrowLabel
         '
         Me.GameThrowLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
@@ -206,11 +207,21 @@ Partial Class Dart_board_form
         Me.GameThrowsCounterLabel.Text = "(X,Y)  (X,Y)  (X,Y)"
         Me.GameThrowsCounterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'testLabel
+        '
+        Me.testLabel.AutoSize = True
+        Me.testLabel.Location = New System.Drawing.Point(383, 18)
+        Me.testLabel.Name = "testLabel"
+        Me.testLabel.Size = New System.Drawing.Size(36, 17)
+        Me.testLabel.TabIndex = 11
+        Me.testLabel.Text = "Test"
+        '
         'Dart_board_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1339, 716)
+        Me.Controls.Add(Me.testLabel)
         Me.Controls.Add(Me.GameThrowsCounterLabel)
         Me.Controls.Add(Me.GameThrowLabel)
         Me.Controls.Add(Me.ResetGameButton)
@@ -254,4 +265,5 @@ Partial Class Dart_board_form
     Friend WithEvents ResetGameButton As Button
     Friend WithEvents GameThrowLabel As Label
     Friend WithEvents GameThrowsCounterLabel As Label
+    Friend WithEvents testLabel As Label
 End Class

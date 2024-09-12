@@ -33,6 +33,8 @@ Public Class Dart_board_form
     Dim currentY As Integer
     Dim throwMessage As String
     Dim totalThrows(,) As Integer = {{0, 0}, {0, 0}, {0, 0}}
+    Dim fileName As String = "...\...\Game" + CStr(Date.Now.Date) + CStr(Date.Now.Hour) + CStr(Date.Now.Date.Minute) + CStr(Date.Now.Date.Second) + ".txt"
+
 
     'Custom Methods
 
@@ -142,6 +144,7 @@ Public Class Dart_board_form
     ''' Clears Board, Resets Number of Throws, Updates Labels, Clears Array
     ''' </summary>
     Sub ResetGame()
+        testLabel.Text = fileName
         'ReDraw the cross quadrants and erase board
         DrawQuadrants()
         'Update number of throws count and label
@@ -153,6 +156,14 @@ Public Class Dart_board_form
         throwMessage = ""
         'Reset Game throws label
         GameThrowsCounterLabel.Text = "(X,Y) (X,Y) (X,Y)"
+    End Sub
+
+    Sub ExportGameScores()
+        Dim fileName As String = "..\..\..\Game" '+ CStr(Date.Now.Date) + CStr(Date.Now.Hour) + CStr(Date.Now.Date.Minute) + CStr(Date.Now.Date.Second) + ".txt"
+        Dim fileNumber As Integer = FreeFile()
+        FileOpen(fileNumber, fileName, OpenMode.Append)
+        Write(fileNumber, "This worked?")
+        FileClose(fileNumber)
     End Sub
 
     'Event Handlers
@@ -183,7 +194,7 @@ Public Class Dart_board_form
 
     Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click,
                                                                                            ResetGameButton.Click
-        '**********************************************Need to export here**************************************************************************************
+        ExportGameScores()
         ResetGame()
     End Sub
 
