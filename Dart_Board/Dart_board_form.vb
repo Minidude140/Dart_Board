@@ -12,7 +12,7 @@
 '[*] Add Reset Game Function
 '[1/2]Add player prompt when out of turns (kinda Broken)
 '[*]Save previous throws
-'[]Fix tool tips
+'[*]Fix tool tips
 '[*]Fix tab stops
 '[]Fix Drawing quadrants on the picture box at the form load
 '[]Export previous throws

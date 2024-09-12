@@ -103,6 +103,7 @@ Partial Class Dart_board_form
         Me.QuitButton.Size = New System.Drawing.Size(169, 62)
         Me.QuitButton.TabIndex = 3
         Me.QuitButton.Text = "Quit"
+        Me.DartBoardToolTip.SetToolTip(Me.QuitButton, "This Button Will Exit the Program")
         Me.QuitButton.UseVisualStyleBackColor = True
         '
         'OptionsMenuStrip
@@ -148,9 +149,11 @@ Partial Class Dart_board_form
         '
         'AboutToolStripMenuItem
         '
+        Me.AboutToolStripMenuItem.AutoToolTip = True
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(64, 24)
         Me.AboutToolStripMenuItem.Text = "About"
+        Me.AboutToolStripMenuItem.ToolTipText = "Press This Button to Learn About This Program"
         '
         'DartBoardPictureBox
         '
@@ -175,6 +178,7 @@ Partial Class Dart_board_form
         Me.ResetGameButton.Size = New System.Drawing.Size(169, 62)
         Me.ResetGameButton.TabIndex = 2
         Me.ResetGameButton.Text = "Reset"
+        Me.DartBoardToolTip.SetToolTip(Me.ResetGameButton, "This Button Will Reset the Game")
         Me.ResetGameButton.UseVisualStyleBackColor = True
         '
         'GameThrowLabel
