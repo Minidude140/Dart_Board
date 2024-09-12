@@ -37,9 +37,10 @@ Public Class Dart_board_form
     'Custom Methods
 
     ''' <summary>
-    ''' Draws a Cross in the center of the Dart Board to create quadrants
+    ''' Refreshes Dart Board and Draws a Cross in the center of the Dart Board to create quadrants
     ''' </summary>
     Sub DrawQuadrants()
+        DartBoardPictureBox.Refresh()
         Dim Xmax As Integer = CInt(DartBoardPictureBox.Width)
         Dim Ymax As Integer = CInt(DartBoardPictureBox.Height)
         'initialize graphics object and set drawing surface to picture box
@@ -137,10 +138,11 @@ Public Class Dart_board_form
         UpdateGameThrowsLabel()
     End Sub
 
+    ''' <summary>
+    ''' Clears Board, Resets Number of Throws, Updates Labels, Clears Array
+    ''' </summary>
     Sub ResetGame()
-        'Clear the Dart Board Screen
-        DartBoardPictureBox.Refresh()
-        'ReDraw the cross quadrants
+        'ReDraw the cross quadrants and erase board
         DrawQuadrants()
         'Update number of throws count and label
         numberOfThrows = 0
@@ -155,16 +157,12 @@ Public Class Dart_board_form
 
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
-        DartBoardPictureBox.Refresh()
-        'ResetGameButton.PerformClick()
-        'DrawQuadrants()
-        'numberOfThrows = 0
-        'UpdateNumberOfThrows(numberOfThrows)
+        'MsgBox("Welcome to The Simulated Game of Darts.  Let's See How You Throw.")
+        ResetGame()
     End Sub
 
     Private Sub ThrowDartButton_Click(sender As Object, e As EventArgs) Handles ThrowDartButton.Click,
                                                                                 ThrowDartToolStripMenuItem.Click
-        DrawQuadrants() 'Remove this at some point
         'Check if number of throws is over the max and update label
         If numberOfThrows < 3 Then
             ThrowDart()
@@ -196,5 +194,9 @@ Public Class Dart_board_form
 
     Private Sub spacepress(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         ThrowDartButton.PerformClick()
+    End Sub
+
+    Private Sub Dart_board_form_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+        DrawQuadrants()
     End Sub
 End Class
