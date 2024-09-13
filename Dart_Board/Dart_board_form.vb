@@ -32,6 +32,7 @@ Public Class Dart_board_form
     Dim currentY As Integer
     Dim throwMessage As String
     Dim totalThrows(,) As Integer = {{0, 0}, {0, 0}, {0, 0}}
+    Dim importedThrows As New List(Of String)
 
 
     'Custom Methods
@@ -155,8 +156,11 @@ Public Class Dart_board_form
         GameThrowsCounterLabel.Text = "(X,Y) (X,Y) (X,Y)"
     End Sub
 
+    ''' <summary>
+    ''' Saves Data of totalThrows Array into a new text file
+    ''' </summary>
     Sub ExportGameScores()
-        Dim fileName As String = "..\..\..\Game" + CStr(Date.Now.Day) + CStr(Date.Now.Month) + CStr(Date.Now.Year) + CStr(Date.Now.Hour) + CStr(Date.Now.Date.Minute) + CStr(Date.Now.Date.Second) + ".txt"
+        Dim fileName As String = "..\..\..\Game" & DateTime.Now.ToString("yyyMMddhhmmssmm") & ".txt"
         Dim fileNumber As Integer = FreeFile()
         FileOpen(fileNumber, fileName, OpenMode.Append)
         For I = 0 To 2
@@ -165,6 +169,13 @@ Public Class Dart_board_form
             WriteLine(fileNumber)
         Next
         FileClose(fileNumber)
+    End Sub
+
+    Sub ImportGame()
+        '       Dim currentRecord As String
+        '      Dim fileNumber As Integer = FreeFile()
+        '     Dim fileName As String = FileDialog()
+        '    FileOpen(FreeFile, , OpenMode.Input)
     End Sub
 
     'Event Handlers
