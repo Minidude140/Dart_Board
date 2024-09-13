@@ -177,12 +177,19 @@ Public Class Dart_board_form
     Sub ImportGame()
         Dim currentRecord As String
         Dim fileNumber As Integer = FreeFile()
+        'Opens a file dialog for the user to select prevous game
         'OpenFileDialog1.InitialDirectory("..\..\..\")
         OpenFileDialog1.Filter = "text files (*.txt) |*.txt"
         OpenFileDialog1.ShowDialog()
         Dim fileName As String = OpenFileDialog1.FileName
         Try
+            'open user selected file and load records into imported throws list
             FileOpen(FreeFile, fileName, OpenMode.Input)
+            Do Until EOF(fileNumber)
+                Input(fileNumber, currentRecord)
+                importedThrows.Add(currentRecord)
+            Loop
+            FileClose(FreeFile)
         Catch ex As Exception
             MsgBox("Sorry we could not find your file")
         End Try
