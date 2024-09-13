@@ -172,7 +172,7 @@ Public Class Dart_board_form
     End Sub
 
     ''' <summary>
-    ''' OPens File Dialog for user to select previous Game save
+    ''' OPens File Dialog for user to select previous Game save and imports data into list
     ''' </summary>
     Sub ImportGame()
         Dim currentRecord As String
@@ -187,12 +187,22 @@ Public Class Dart_board_form
             FileOpen(FreeFile, fileName, OpenMode.Input)
             Do Until EOF(fileNumber)
                 Input(fileNumber, currentRecord)
-                importedThrows.Add(currentRecord)
+                'check if the current record is blank
+                If currentRecord = "" Then
+                    'do not add to list
+                Else
+                    'add record to list
+                    importedThrows.Add(currentRecord)
+                End If
             Loop
             FileClose(FreeFile)
         Catch ex As Exception
             MsgBox("Sorry we could not find your file")
         End Try
+
+    End Sub
+
+    Sub LoadGame()
 
     End Sub
 
