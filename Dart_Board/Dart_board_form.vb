@@ -195,15 +195,27 @@ Public Class Dart_board_form
                     importedThrows.Add(currentRecord)
                 End If
             Loop
-            FileClose(FreeFile)
+            FileClose(fileNumber)
         Catch ex As Exception
             MsgBox("Sorry we could not find your file")
         End Try
 
     End Sub
 
+    ''' <summary>
+    ''' Redraws Dart throws from imported list values
+    ''' </summary>
     Sub LoadGame()
-
+        'Clears Dart Board and Redraws Quadrants
+        DartBoardPictureBox.Refresh()
+        DrawQuadrants()
+        'Redraw Previous 3 throws
+        DrawTarget(CInt(importedThrows(0)), CInt(importedThrows(1)))
+        DrawTarget(CInt(importedThrows(2)), CInt(importedThrows(3)))
+        DrawTarget(CInt(importedThrows(4)), CInt(importedThrows(5)))
+        'Update number of throws
+        numberOfThrows = 3
+        UpdateNumberOfThrows(numberOfThrows)
     End Sub
 
     'Event Handlers
@@ -256,6 +268,11 @@ Public Class Dart_board_form
     End Sub
 
     Private Sub ImportPreviousSaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportPreviousSaveToolStripMenuItem.Click
+        'Load File throw saves into list
         ImportGame()
+        'Redraw loaded game throws
+        LoadGame()
+        'Clear list for next imoort
+        importedThrows.Clear()
     End Sub
 End Class
