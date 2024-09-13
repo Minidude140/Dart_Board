@@ -10,16 +10,15 @@
 '[*]Draw Target on x,y coordinates
 '[*]Count throws
 '[*] Add Reset Game Function
-'[1/2]Add player prompt when out of turns (kinda Broken)
+'[*]Add player prompt when out of turns (kinda Broken)
 '[*]Save previous throws
 '[*]Fix tool tips
 '[*]Fix tab stops
-'[]Fix Drawing quadrants on the picture box at the form load
-'[]Export previous throws
+'[*]Fix Drawing quadrants on the picture box at the form load
+'[*]Export previous throws
 '[]Load old game
 
 '**TO ASK TEACH**
-'-Why can't I see my label on my "out of darts" prompt? Better way to pop-up prompt?
 '-Why won't my quadrants draw on form load? why can't I dim my Xmax and Ymax globally? (I think it's related to when the picture box is drawn)
 
 Option Explicit On
@@ -33,7 +32,6 @@ Public Class Dart_board_form
     Dim currentY As Integer
     Dim throwMessage As String
     Dim totalThrows(,) As Integer = {{0, 0}, {0, 0}, {0, 0}}
-    Dim fileName As String = "...\...\Game" + CStr(Date.Now.Date) + CStr(Date.Now.Hour) + CStr(Date.Now.Date.Minute) + CStr(Date.Now.Date.Second) + ".txt"
 
 
     'Custom Methods
@@ -144,7 +142,6 @@ Public Class Dart_board_form
     ''' Clears Board, Resets Number of Throws, Updates Labels, Clears Array
     ''' </summary>
     Sub ResetGame()
-        testLabel.Text = fileName
         'ReDraw the cross quadrants and erase board
         DrawQuadrants()
         'Update number of throws count and label
@@ -159,16 +156,19 @@ Public Class Dart_board_form
     End Sub
 
     Sub ExportGameScores()
-        Dim fileName As String = "..\..\..\Game" '+ CStr(Date.Now.Date) + CStr(Date.Now.Hour) + CStr(Date.Now.Date.Minute) + CStr(Date.Now.Date.Second) + ".txt"
+        Dim fileName As String = "..\..\..\Game" + CStr(Date.Now.Day) + CStr(Date.Now.Month) + CStr(Date.Now.Year) + CStr(Date.Now.Hour) + CStr(Date.Now.Date.Minute) + CStr(Date.Now.Date.Second) + ".txt"
         Dim fileNumber As Integer = FreeFile()
         FileOpen(fileNumber, fileName, OpenMode.Append)
-        Write(fileNumber, "This worked?")
+        For I = 0 To 2
+            Write(fileNumber, totalThrows(I, 0))
+            Write(fileNumber, totalThrows(I, 1))
+            WriteLine(fileNumber)
+        Next
         FileClose(fileNumber)
     End Sub
 
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'MsgBox("Welcome to The Simulated Game of Darts.  Let's See How You Throw.")
         ResetGame()
     End Sub
 
@@ -208,6 +208,11 @@ Public Class Dart_board_form
     End Sub
 
     Private Sub Dart_board_form_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+        DrawQuadrants()
+    End Sub
+
+    Private Sub LoadDealyTimer_Tick(sender As Object, e As EventArgs) Handles LoadDealyTimer.Tick
+        LoadDealyTimer.Enabled = False
         DrawQuadrants()
     End Sub
 End Class

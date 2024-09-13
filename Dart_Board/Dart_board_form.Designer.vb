@@ -40,7 +40,7 @@ Partial Class Dart_board_form
         Me.DartBoardPictureBox = New System.Windows.Forms.PictureBox()
         Me.GameThrowLabel = New System.Windows.Forms.Label()
         Me.GameThrowsCounterLabel = New System.Windows.Forms.Label()
-        Me.testLabel = New System.Windows.Forms.Label()
+        Me.LoadDealyTimer = New System.Windows.Forms.Timer(Me.components)
         Me.OptionsMenuStrip.SuspendLayout()
         CType(Me.DartBoardPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -126,7 +126,7 @@ Partial Class Dart_board_form
         Me.OptionsMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.OptionsMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.OptionsMenuStrip.Name = "OptionsMenuStrip"
-        Me.OptionsMenuStrip.Size = New System.Drawing.Size(1339, 30)
+        Me.OptionsMenuStrip.Size = New System.Drawing.Size(1339, 28)
         Me.OptionsMenuStrip.TabIndex = 6
         Me.OptionsMenuStrip.Text = "Options"
         '
@@ -207,21 +207,16 @@ Partial Class Dart_board_form
         Me.GameThrowsCounterLabel.Text = "(X,Y)  (X,Y)  (X,Y)"
         Me.GameThrowsCounterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'testLabel
+        'LoadDealyTimer
         '
-        Me.testLabel.AutoSize = True
-        Me.testLabel.Location = New System.Drawing.Point(383, 18)
-        Me.testLabel.Name = "testLabel"
-        Me.testLabel.Size = New System.Drawing.Size(36, 17)
-        Me.testLabel.TabIndex = 11
-        Me.testLabel.Text = "Test"
+        Me.LoadDealyTimer.Enabled = True
+        Me.LoadDealyTimer.Interval = 500
         '
         'Dart_board_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1339, 716)
-        Me.Controls.Add(Me.testLabel)
         Me.Controls.Add(Me.GameThrowsCounterLabel)
         Me.Controls.Add(Me.GameThrowLabel)
         Me.Controls.Add(Me.ResetGameButton)
@@ -265,5 +260,5 @@ Partial Class Dart_board_form
     Friend WithEvents ResetGameButton As Button
     Friend WithEvents GameThrowLabel As Label
     Friend WithEvents GameThrowsCounterLabel As Label
-    Friend WithEvents testLabel As Label
+    Friend WithEvents LoadDealyTimer As Timer
 End Class
