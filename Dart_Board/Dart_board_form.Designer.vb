@@ -41,6 +41,7 @@ Partial Class Dart_board_form
         Me.GameThrowLabel = New System.Windows.Forms.Label()
         Me.GameThrowsCounterLabel = New System.Windows.Forms.Label()
         Me.LoadDealyTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.OptionsMenuStrip.SuspendLayout()
         CType(Me.DartBoardPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -212,6 +213,10 @@ Partial Class Dart_board_form
         Me.LoadDealyTimer.Enabled = True
         Me.LoadDealyTimer.Interval = 500
         '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = ".txt"
+        '
         'Dart_board_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -261,4 +266,5 @@ Partial Class Dart_board_form
     Friend WithEvents GameThrowLabel As Label
     Friend WithEvents GameThrowsCounterLabel As Label
     Friend WithEvents LoadDealyTimer As Timer
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class

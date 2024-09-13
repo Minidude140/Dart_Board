@@ -171,11 +171,22 @@ Public Class Dart_board_form
         FileClose(fileNumber)
     End Sub
 
+    ''' <summary>
+    ''' OPens File Dialog for user to select previous Game save
+    ''' </summary>
     Sub ImportGame()
-        '       Dim currentRecord As String
-        '      Dim fileNumber As Integer = FreeFile()
-        '     Dim fileName As String = FileDialog()
-        '    FileOpen(FreeFile, , OpenMode.Input)
+        Dim currentRecord As String
+        Dim fileNumber As Integer = FreeFile()
+        'OpenFileDialog1.InitialDirectory("..\..\..\")
+        OpenFileDialog1.Filter = "text files (*.txt) |*.txt"
+        OpenFileDialog1.ShowDialog()
+        Dim fileName As String = OpenFileDialog1.FileName
+        Try
+            FileOpen(FreeFile, fileName, OpenMode.Input)
+        Catch ex As Exception
+            MsgBox("Sorry we could not find your file")
+        End Try
+
     End Sub
 
     'Event Handlers
@@ -225,5 +236,9 @@ Public Class Dart_board_form
     Private Sub LoadDealyTimer_Tick(sender As Object, e As EventArgs) Handles LoadDealyTimer.Tick
         LoadDealyTimer.Enabled = False
         DrawQuadrants()
+    End Sub
+
+    Private Sub ImportPreviousSaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportPreviousSaveToolStripMenuItem.Click
+        ImportGame()
     End Sub
 End Class
