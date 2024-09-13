@@ -16,10 +16,8 @@
 '[*]Fix tab stops
 '[*]Fix Drawing quadrants on the picture box at the form load
 '[*]Export previous throws
-'[]Load old game
-
-'**TO ASK TEACH**
-'-Why won't my quadrants draw on form load? why can't I dim my Xmax and Ymax globally? (I think it's related to when the picture box is drawn)
+'[*]Load old game
+'[]Check user selected file is ok
 
 Option Explicit On
 Option Strict On
