@@ -183,13 +183,15 @@ Public Class Dart_board_form
     Sub ImportGame()
         Dim currentRecord As String
         Dim fileNumber As Integer = FreeFile()
-        'Opens a file dialog for the user to select previous game
-        'OpenFileDialog1.InitialDirectory("..\..\..\")
-        OpenFileDialog1.Filter = "text files (*.txt) |*.txt"
-        OpenFileDialog1.ShowDialog()
-        Dim fileName As String = OpenFileDialog1.FileName
-        'open user selected file and load records into imported throws list
-        FileOpen(FreeFile, fileName, OpenMode.Input)
+
+        Try
+            'Opens a file dialog for the user to select previous game
+            'OpenFileDialog1.InitialDirectory("..\..\..\")
+            OpenFileDialog1.Filter = "text files (*.txt) |*.txt"
+            OpenFileDialog1.ShowDialog()
+            Dim fileName As String = OpenFileDialog1.FileName
+            'open user selected file and load records into imported throws list
+            FileOpen(FreeFile, fileName, OpenMode.Input)
             Do Until EOF(fileNumber)
                 Input(fileNumber, currentRecord)
                 'check if the current record is blank
@@ -200,7 +202,23 @@ Public Class Dart_board_form
                     importedThrows.Add(currentRecord)
                 End If
             Loop
-        FileClose(fileNumber)
+            FileClose(fileNumber)
+            'test imported throws to see if valid  if not raise an exception
+            Select Case importedThrows.Count
+            'Check if 
+                Case < 6
+                    Throw New Exception()
+                Case > 6
+
+            End Select
+
+            'Redraw loaded game throws
+            LoadGame()
+            'Show user the inputs score
+            PreviousGameMessage()
+        Catch ex As Exception
+            MsgBox("Sorry We Could Not Find or Read Your Selected File")
+        End Try
     End Sub
 
     ''' <summary>
@@ -219,18 +237,25 @@ Public Class Dart_board_form
         UpdateNumberOfThrows(numberOfThrows)
     End Sub
 
+    ''' <summary>
+    ''' Writes a message box to the user about the imported game
+    ''' </summary>
     Sub PreviousGameMessage()
         Dim userMessage As String
         userMessage = "The Previous Game Has Been Loaded.  The Throws of This Game Were: ("
-            'Add First Throw
-            userMessage = userMessage + importedThrows(0) + "," + importedThrows(1) + ") ("
-            'Add Second Throw
-            userMessage = userMessage + importedThrows(2) + "," + importedThrows(3) + ") ("
-            'Add Final Throw
-            userMessage = userMessage + importedThrows(4) + "," + importedThrows(5) + ") "
-            userMessage = userMessage + "These Throws Will Be Redrawn on Screen Now."
+        'Add First Throw
+        userMessage = userMessage + importedThrows(0) + "," + importedThrows(1) + ") ("
+        'Add Second Throw
+        userMessage = userMessage + importedThrows(2) + "," + importedThrows(3) + ") ("
+        'Add Final Throw
+        userMessage = userMessage + importedThrows(4) + "," + importedThrows(5) + ") "
+        userMessage = userMessage + "These Throws Will Be Redrawn on Screen Now."
         MsgBox(userMessage)
     End Sub
+
+    Function UserInputValidation() As Boolean
+
+    End Function
 
     'Event Handlers
     Private Sub Dart_board_form_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -281,19 +306,12 @@ Public Class Dart_board_form
     End Sub
 
     Private Sub ImportPreviousSaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportPreviousSaveToolStripMenuItem.Click
-        Try
-            'Load File throw saves into list
-            ImportGame()
-            'Prompt user of previous score
-            PreviousGameMessage()
-            'Redraw loaded game throws
-            LoadGame()
-            'Clear list for next import
-            importedThrows.Clear()
-        Catch ex As Exception
-            MsgBox("Sorry We Could Not Find or Read Your Selected File")
-        End Try
 
+        'Load File throw saves into list (including user input validation)
+        ImportGame()
+
+        'Clear list for next import
+        importedThrows.Clear()
     End Sub
 
     Private Sub ExportGameButton_Click(sender As Object, e As EventArgs) Handles ExportGameButton.Click, ExportCurrentThrowsToolStripMenuItem.Click
