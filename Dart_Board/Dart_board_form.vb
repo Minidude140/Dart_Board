@@ -17,7 +17,9 @@
 '[*]Fix Drawing quadrants on the picture box at the form load
 '[*]Export previous throws
 '[*]Load old game
-'[1/2]Check user selected file is ok
+'[*]Check user selected file is OK
+'[]Add program defined file key
+'[]Open file dialog to relative path
 
 Option Explicit On
 Option Strict On
@@ -251,7 +253,7 @@ Public Class Dart_board_form
     End Sub
 
     ''' <summary>
-    ''' Checks the user input assumes false and will test record length
+    ''' Checks the user input for record length and contents are numeric
     ''' </summary>
     ''' <param name="count"></param>
     ''' <returns></returns>
