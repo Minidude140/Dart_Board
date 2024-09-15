@@ -243,7 +243,6 @@ Public Class Dart_board_form
 
     Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click,
                                                                                            ResetGameButton.Click
-        ExportGameScores()
         ResetGame()
     End Sub
 
@@ -272,5 +271,9 @@ Public Class Dart_board_form
         LoadGame()
         'Clear list for next imoort
         importedThrows.Clear()
+    End Sub
+
+    Private Sub ExportGameButton_Click(sender As Object, e As EventArgs) Handles ExportGameButton.Click, ExportCurrentThrowsToolStripMenuItem.Click
+        ExportGameScores()
     End Sub
 End Class
