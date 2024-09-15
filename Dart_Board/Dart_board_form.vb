@@ -204,18 +204,18 @@ Public Class Dart_board_form
             Loop
             FileClose(fileNumber)
             'test imported throws to see if valid  if not raise an exception
-            Select Case importedThrows.Count
-            'Check if 
-                Case < 6
-                    Throw New Exception()
-                Case > 6
+            If UserInputValidation(importedThrows.Count) = True Then
 
-            End Select
+                'Redraw loaded game throws
+                LoadGame()
+                'Show user the inputs score
+                PreviousGameMessage()
+            Else
+                'did not pass user validation
+                Throw New Exception()
+            End If
 
-            'Redraw loaded game throws
-            LoadGame()
-            'Show user the inputs score
-            PreviousGameMessage()
+
         Catch ex As Exception
             MsgBox("Sorry We Could Not Find or Read Your Selected File")
         End Try
@@ -253,8 +253,14 @@ Public Class Dart_board_form
         MsgBox(userMessage)
     End Sub
 
-    Function UserInputValidation() As Boolean
-
+    Function UserInputValidation(count As Integer) As Boolean
+        'assume input is false
+        Dim isValid As Boolean = False
+        'Check if user input has the correct number of records
+        If count = 6 Then
+            isValid = True
+        End If
+        Return isValid
     End Function
 
     'Event Handlers
