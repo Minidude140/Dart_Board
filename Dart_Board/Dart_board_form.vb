@@ -17,7 +17,7 @@
 '[*]Fix Drawing quadrants on the picture box at the form load
 '[*]Export previous throws
 '[*]Load old game
-'[]Check user selected file is ok
+'[1/2]Check user selected file is ok
 
 Option Explicit On
 Option Strict On
@@ -183,7 +183,6 @@ Public Class Dart_board_form
     Sub ImportGame()
         Dim currentRecord As String
         Dim fileNumber As Integer = FreeFile()
-
         Try
             'Opens a file dialog for the user to select previous game
             'OpenFileDialog1.InitialDirectory("..\..\..\")
@@ -204,7 +203,7 @@ Public Class Dart_board_form
             Loop
             FileClose(fileNumber)
             'test imported throws to see if valid  if not raise an exception
-            If UserInputValidation(importedThrows.Count) = True Then
+            If UserInputValidation(importedThrows) = True Then
 
                 'Redraw loaded game throws
                 LoadGame()
@@ -214,8 +213,6 @@ Public Class Dart_board_form
                 'did not pass user validation
                 Throw New Exception()
             End If
-
-
         Catch ex As Exception
             MsgBox("Sorry We Could Not Find or Read Your Selected File")
         End Try
@@ -253,13 +250,51 @@ Public Class Dart_board_form
         MsgBox(userMessage)
     End Sub
 
-    Function UserInputValidation(count As Integer) As Boolean
+    ''' <summary>
+    ''' Checks the user input assumes false and will test record length
+    ''' </summary>
+    ''' <param name="count"></param>
+    ''' <returns></returns>
+    Function UserInputValidation(Contents As List(Of String)) As Boolean
         'assume input is false
         Dim isValid As Boolean = False
+        Dim correctCount As Boolean = False
+        Dim count As Integer = Contents.Count
+        Dim allNumbers(count - 1) As Boolean
+        Dim allNumbersValid As Boolean = True
+
         'Check if user input has the correct number of records
+        count = Contents.Count
         If count = 6 Then
+            correctCount = True
+        End If
+
+        'loop through list: contents checking if they are all numbers
+        count = count - 1
+        Do Until count < 0
+            'check each record to see if it is a number
+            If IsNumeric(Contents(count)) = True Then
+                allNumbers(count) = True
+            Else
+                allNumbers(count) = False
+            End If
+            count = count - 1
+        Loop
+        'check if all records are numbers
+        count = Contents.Count - 1
+        Do Until count < 0
+            If allNumbers(count) = True Then
+            Else
+                allNumbersValid = False
+            End If
+            count = count - 1
+        Loop
+
+        'check if all conditions are met
+        If correctCount = True And allNumbersValid = True Then
             isValid = True
         End If
+
         Return isValid
     End Function
 
