@@ -183,14 +183,13 @@ Public Class Dart_board_form
     Sub ImportGame()
         Dim currentRecord As String
         Dim fileNumber As Integer = FreeFile()
-        'Opens a file dialog for the user to select prevous game
+        'Opens a file dialog for the user to select previous game
         'OpenFileDialog1.InitialDirectory("..\..\..\")
         OpenFileDialog1.Filter = "text files (*.txt) |*.txt"
         OpenFileDialog1.ShowDialog()
         Dim fileName As String = OpenFileDialog1.FileName
-        Try
-            'open user selected file and load records into imported throws list
-            FileOpen(FreeFile, fileName, OpenMode.Input)
+        'open user selected file and load records into imported throws list
+        FileOpen(FreeFile, fileName, OpenMode.Input)
             Do Until EOF(fileNumber)
                 Input(fileNumber, currentRecord)
                 'check if the current record is blank
@@ -201,11 +200,7 @@ Public Class Dart_board_form
                     importedThrows.Add(currentRecord)
                 End If
             Loop
-            FileClose(fileNumber)
-        Catch ex As Exception
-            MsgBox("Sorry we could not find your file")
-        End Try
-
+        FileClose(fileNumber)
     End Sub
 
     ''' <summary>
@@ -222,6 +217,19 @@ Public Class Dart_board_form
         'Update number of throws
         numberOfThrows = 3
         UpdateNumberOfThrows(numberOfThrows)
+    End Sub
+
+    Sub PreviousGameMessage()
+        Dim userMessage As String
+        userMessage = "The Previous Game Has Been Loaded.  The Throws of This Game Were: ("
+            'Add First Throw
+            userMessage = userMessage + importedThrows(0) + "," + importedThrows(1) + ") ("
+            'Add Second Throw
+            userMessage = userMessage + importedThrows(2) + "," + importedThrows(3) + ") ("
+            'Add Final Throw
+            userMessage = userMessage + importedThrows(4) + "," + importedThrows(5) + ") "
+            userMessage = userMessage + "These Throws Will Be Redrawn on Screen Now."
+        MsgBox(userMessage)
     End Sub
 
     'Event Handlers
@@ -273,12 +281,19 @@ Public Class Dart_board_form
     End Sub
 
     Private Sub ImportPreviousSaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportPreviousSaveToolStripMenuItem.Click
-        'Load File throw saves into list
-        ImportGame()
-        'Redraw loaded game throws
-        LoadGame()
-        'Clear list for next imoort
-        importedThrows.Clear()
+        Try
+            'Load File throw saves into list
+            ImportGame()
+            'Prompt user of previous score
+            PreviousGameMessage()
+            'Redraw loaded game throws
+            LoadGame()
+            'Clear list for next import
+            importedThrows.Clear()
+        Catch ex As Exception
+            MsgBox("Sorry We Could Not Find or Read Your Selected File")
+        End Try
+
     End Sub
 
     Private Sub ExportGameButton_Click(sender As Object, e As EventArgs) Handles ExportGameButton.Click, ExportCurrentThrowsToolStripMenuItem.Click
