@@ -155,18 +155,26 @@ Public Class Dart_board_form
     End Sub
 
     ''' <summary>
-    ''' Saves Data of totalThrows Array into a new text file
+    ''' Saves Data of totalThrows Array into a new text file prompts user of file name
     ''' </summary>
     Sub ExportGameScores()
+        'Name file and open
         Dim fileName As String = "..\..\..\Game" & DateTime.Now.ToString("yyyMMddhhmmssmm") & ".txt"
         Dim fileNumber As Integer = FreeFile()
         FileOpen(fileNumber, fileName, OpenMode.Append)
+        'Write scores to file
         For I = 0 To 2
             Write(fileNumber, totalThrows(I, 0))
             Write(fileNumber, totalThrows(I, 1))
             WriteLine(fileNumber)
         Next
         FileClose(fileNumber)
+        'remove the . in the fileName (except the .txt)
+        fileName = Replace(fileName, ".", "", 1, 6)
+        'Remove the \ in the file name
+        fileName = Replace(fileName, "\", "", 1, -1)
+        'Prompt user that the game has been saved
+        MsgBox("Your Game Has Been Saved as: " + fileName)
     End Sub
 
     ''' <summary>
