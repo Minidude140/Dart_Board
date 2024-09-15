@@ -18,7 +18,7 @@
 '[*]Export previous throws
 '[*]Load old game
 '[*]Check user selected file is OK
-'[]Add program defined file key
+'[*]Add program defined file key
 '[]Open file dialog to relative path
 
 Option Explicit On
@@ -165,6 +165,8 @@ Public Class Dart_board_form
         Dim fileNumber As Integer = FreeFile()
         FileOpen(fileNumber, fileName, OpenMode.Append)
         'Write scores to file
+        Write(fileNumber, "$$&&**&&$$")
+        WriteLine(fileNumber)
         For I = 0 To 2
             Write(fileNumber, totalThrows(I, 0))
             Write(fileNumber, totalThrows(I, 1))
@@ -206,7 +208,7 @@ Public Class Dart_board_form
             FileClose(fileNumber)
             'test imported throws to see if valid  if not raise an exception
             If UserInputValidation(importedThrows) = True Then
-
+                ' importedThrows.RemoveAt(0)
                 'Redraw loaded game throws
                 LoadGame()
                 'Show user the inputs score
@@ -253,7 +255,7 @@ Public Class Dart_board_form
     End Sub
 
     ''' <summary>
-    ''' Checks the user input for record length and contents are numeric
+    ''' Checks the user input for program key, record length, and that the contents are numeric
     ''' </summary>
     ''' <param name="count"></param>
     ''' <returns></returns>
@@ -261,16 +263,21 @@ Public Class Dart_board_form
         'assume input is false
         Dim isValid As Boolean = False
         Dim correctCount As Boolean = False
+        Dim allNumbersValid As Boolean = True
+        Dim programKey As Boolean = False
+        'check the file came from the dart board game
+        If Contents(0) = "$$&&**&&$$" Then
+            programKey = True
+        End If
+        'remove program key from records for accurate looping
+        Contents.RemoveAt(0)
         Dim count As Integer = Contents.Count
         Dim allNumbers(count - 1) As Boolean
-        Dim allNumbersValid As Boolean = True
-
         'Check if user input has the correct number of records
         count = Contents.Count
         If count = 6 Then
             correctCount = True
         End If
-
         'loop through list: contents checking if they are all numbers
         count = count - 1
         Do Until count < 0
@@ -291,12 +298,10 @@ Public Class Dart_board_form
             End If
             count = count - 1
         Loop
-
         'check if all conditions are met
-        If correctCount = True And allNumbersValid = True Then
+        If correctCount = True And allNumbersValid = True And programKey = True Then
             isValid = True
         End If
-
         Return isValid
     End Function
 
@@ -349,10 +354,8 @@ Public Class Dart_board_form
     End Sub
 
     Private Sub ImportPreviousSaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportPreviousSaveToolStripMenuItem.Click
-
         'Load File throw saves into list (including user input validation)
         ImportGame()
-
         'Clear list for next import
         importedThrows.Clear()
     End Sub
